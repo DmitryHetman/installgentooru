@@ -12,6 +12,7 @@ Gentoo это элитный source-based GNU/Linux дистрибутив, эл
 >В чем преимущество Gentoo GNU/Linux?
 Gentoo GNU/Linux предоставляет полную свободу выбора всего и вся, вы сами решаете как будет работать ваш дистрибутив, именно поэтому Gentoo GNU/Linux имеет абсолютное превосходство над любыми ОС в любом спектре задач.
 Gentoo GNU/Linux это не просто конструктор как Arch и минимальный Debian, здесь возможности гораздо шире, ведь есть доступ к более низкому уровню блягодаря глобальным и локальным USE-флагам.
+С помощью Gentoo вы гораздо быстрее вникнете в суть GNU/Linux.
 >Долго ли компилируются пакеты?
 Нет, особенно на современном железе. Ядро со всеми модулями на Intel Core i3 4330 собирается за 3 минуты и 23 секунды.
 >Правда что Gentoo потребляет меньше RAM?
@@ -29,6 +30,22 @@ https://wiki.gentoo.org/wiki/Distributions_based_on_Gentoo
 1. Первое с чего стоет начать это выбор Live CD
 Наиболие удобным и оптимальным считаю SystemRescueCD - поддерживает efi, имеет 64 битное ядро и графическую оболочку, совместим с Gentoo GNU/Linux.
 https://www.system-rescue-cd.org/Download
+
+
+
+Wayland
+http://www.chaosreigns.com/wiki/Main_Page
+http://www.phoronix.com/scan.php?page=news_item&px=Intel-Ozone-Wayland-Continues
+https://wayland.freedesktop.org/
+http://projects.genivi.org/wayland-ivi-extension/
+http://losst.ru/testirovanie-wayland-v-gentoo
+https://wiki.gentoo.org/wiki/Wayland
+https://en.wikipedia.org/wiki/Wayland_(display_server_protocol
+https://wiki.archlinux.org/index.php/wayland
+https://forums.gentoo.org/viewtopic-p-7486872.html#7486872
+https://m.reddit.com/r/Gentoo/comments/2e1rn5/wayland_on_gentoo_any_updates/
+https://packages.gentoo.org/packages/dev-libs/sway
+https://packages.gentoo.org/packages/dev-libs/weston
 
 Ссылки на шапку:
 Сюда коммитить, и комментировать:
