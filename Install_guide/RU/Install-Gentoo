@@ -26,7 +26,7 @@ https://wiki.gentoo.org/wiki/Distributions_based_on_Gentoo
 
 Установка:
 Данный гайд предназначен для того чтобы оптимизировать систему под современный 64-битный ПК, добится максимальной скорости, и помочь избежать распостраненных ошибок при установке.
-Это не замена офицеальной документации, ее все-равно прийдется придерживатся внося изменения на свой вкус.
+Это не замена офицеальной документации, ее все-равно прийдется придерживатся внося изменения на свой вкус. Это общие рекомендации, читать это надо перед установкой по хендбуку.
 1. Выбор Live CD
 Наиболие удобным и оптимальным считаю SystemRescueCD - поддерживает efi, имеет 64 битное ядро и графическую оболочку, совместим с Gentoo GNU/Linux.
 https://www.system-rescue-cd.org/Download
@@ -65,7 +65,39 @@ fdisk -t gpt /dev/sda
  CFLAGS="-march=native -mtune=native -Os -m64 -pipe"
  CXXFLAGS="-march=native -mtune=native -Os -m64 -pipe"
  USE="-fortran -static -static-libs"
+6. /etc/portage/package.use/localuses
+В этот файл добавим пару флагов, чтобы gcc собирался без фортрана, а ядро можно было оптимизировать под свою машину.
+  sys-power/suspend -crypt -lzo threads //Программа понадобится если хотите пользоватся спящим режимом, флаги я на свой вкус добавил.
+  sys-kernel/gentoo-sources symlink experimental //Включит патч для оптимизации под свое железо
+                      //При конфигурировании ядра в настройках процессора выберете Processor family (Native optimizations autodetected by GCC)  ---> 
+  sys-devel/gcc -fortran
+7. Обновление GCC
+Для обновления компилятора просто введите в терминал
+emerge --ask sys-devel/gcc
+Компилятор соберется под ваше железо, станет быстрее компилировать, и лучше оптимизировать, можно пересобрать второй раз чтобы он сам собой был собраным.
+cmake тоже не лишним будет обновить и пересобрать под ваше железо.
+emerge --ask dev-util/cmake
+8. Конфигурирование ядра
+Ядро сжимать лучше алгоритмом lz4, чтобы установить архиватор выполните:
+emerge --ask app-arch/lz4
+В конфигурации ядра выберете этот алгоритм:
+General setup>
+    Kernel compression mode (LZ4)  --->
+Потом включите автоопределение процессора компилятором:
+    Processor type and features  --->
+          Processor family (Native optimizations autodetected by GCC)  --->
+Обязательно прочтите эту статью если решили не использовать загрузчика, и грузить ядро из биоса:
+  https://wiki.gentoo.org/wiki/EFI_stub_kernel
+А также почти все остальное будет полезным перед или во время конфигурации:
+  https://wiki.gentoo.org/wiki/Kernel/Configuration
+  https://wiki.gentoo.org/wiki/Kernel/Gentoo_Kernel_Configuration_Guide
+  https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Kernel
+  http://swift.siphos.be/linux_sea/kernelbuilding.html
+9. Заключительные шаги.
+passwd - введите пароль для рута, пользователя добавите уже когда загрузитесь в систему.
 
+10. Установка графической оболочки.
+Приведены ссылки по вейланду, с иксами проблем никаких не будет.
 Wayland
 http://www.chaosreigns.com/wiki/Main_Page
 http://www.phoronix.com/scan.php?page=news_item&px=Intel-Ozone-Wayland-Continues
@@ -79,6 +111,14 @@ https://forums.gentoo.org/viewtopic-p-7486872.html#7486872
 https://m.reddit.com/r/Gentoo/comments/2e1rn5/wayland_on_gentoo_any_updates/
 https://packages.gentoo.org/packages/dev-libs/sway
 https://packages.gentoo.org/packages/dev-libs/weston
+
+А что теперь? Я итак уже гений!
+
+Гайды по установке.
+На русском:
+
+На английском:
+
 
 Ссылки на шапку:
 Сюда коммитить, и комментировать:
