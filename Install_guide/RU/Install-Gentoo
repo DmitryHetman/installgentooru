@@ -53,20 +53,21 @@ fdisk -t gpt /dev/sda
 Путь к файлу: /etc/portage/make.conf
 Конфиг для быстрой системы:
  #-m64 -masm=att/intel -pthread -ftree-parallelize-loops=4 -std=gnu11 -std=gnu++14 -эти опции никогда не задавайте, мало какой пакет с ними соберется
- CFLAGS="-march=native -mtune=native -O2 -m64 -pipe" /native всегда лучше CPU-специфичного параметра, явное указание поколения подтянет опции доступные самому простому процессору из поколения.
- CXXFLAGS="-march=native -mtune=native -O2 -m64 -pipe"
- MAKEOPTS="-j4"  // Цифра - количество потоков
- CHOST="x86_64-pc-linux-gnu"  // Это дефолты и перенастраивать их крайне нежелательно и не имеет смысла.
- CPU_FLAGS_X86="" //Эту переменную можно заполнить флагами из cpuinfo или cat /proc/cpuinfo
- CTARGET="x86_64-pc-linux-gnu"
+  CFLAGS="-march=native -mtune=native -O2 -m64 -pipe" /native всегда лучше CPU-специфичного параметра, явное указание поколения подтянет опции доступные самому простому процессору из поколения.
+  CXXFLAGS="-march=native -mtune=native -O2 -m64 -pipe"
+  MAKEOPTS="-j4"  // Цифра - количество потоков
+  CHOST="x86_64-pc-linux-gnu"  // Это дефолты и перенастраивать их крайне нежелательно и не имеет смысла.
+  CPU_FLAGS_X86="" //Эту переменную можно заполнить флагами из cpuinfo или cat /proc/cpuinfo
+  CTARGET="x86_64-pc-linux-gnu"
  USE="-fortran static static-libs"
  #Уберет компилятор фортрана из gcc, статические библиотеки вызываются быстрее динамических, но потребляют больше памяти, еще поможет избежать проблем с зависимостями при обновлении библиотек
- INPUT_DEVICES="evdev" //Если используете тачпад или графический планшет то прийдется добавить synaptics
- ACCEPT_KEYWORDS="~amd64"  //Начет отображать бета-версии пакетов, как правило большинство из них офицеально стабильно. Без этой опции будут скачиватся довольно старые пакеты.
+  INPUT_DEVICES="evdev" //Если используете тачпад или графический планшет то прийдется добавить synaptics
+  ACCEPT_KEYWORDS="~amd64"  //Начет отображать бета-версии пакетов, как правило большинство из них офицеально стабильно. Без этой опции будут скачиватся довольно старые пакеты.
 Когнфиг для экономной системы отличается парой флагов:
- CFLAGS="-march=native -mtune=native -Os -m64 -pipe"
- CXXFLAGS="-march=native -mtune=native -Os -m64 -pipe"
- USE="-fortran -static -static-libs"
+  CFLAGS="-march=native -mtune=native -Os -m64 -pipe"
+  CXXFLAGS="-march=native -mtune=native -Os -m64 -pipe"
+  USE="-fortran -static -static-libs"
+Если вам интересно посмотреть на готовый make.conf для Intel Core i3 4330 с встроеной графикой можете посмотреть здесь:  https://github.com/DmitriyHetman/gentoo/blob/master/make.conf
 6. /etc/portage/package.use/localuses
 В этот файл добавим пару флагов, чтобы gcc собирался без фортрана, а ядро можно было оптимизировать под свою машину.
   sys-power/suspend -crypt -lzo threads //Программа понадобится если хотите пользоватся спящим режимом, флаги я на свой вкус добавил.
