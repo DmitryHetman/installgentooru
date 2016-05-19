@@ -5,13 +5,130 @@
 Обновить систему за ночь? Легко, просто поспи неделю!
 Новая кофеварка? Накати на нее Gentoo GNU/Linux.
 Гента! Дженту! Линукс! Свидетели вендекапца ITT!
-
+Предыдущий: 
 FAQ:
+>Что такое Gentoo GNU/Linux
+Gentoo это элитный source-based GNU/Linux дистрибутив, элитный потому как остальные source-based слишком неудобны и не автоматизированы, хотя есть Funtoo - почти то-же самое что Gentoo.
 >В чем преимущество Gentoo GNU/Linux?
 Gentoo GNU/Linux предоставляет полную свободу выбора всего и вся, вы сами решаете как будет работать ваш дистрибутив, именно поэтому Gentoo GNU/Linux имеет абсолютное превосходство над любыми ОС в любом спектре задач.
 Gentoo GNU/Linux это не просто конструктор как Arch и минимальный Debian, здесь возможности гораздо шире, ведь есть доступ к более низкому уровню блягодаря глобальным и локальным USE-флагам.
+С помощью Gentoo вы гораздо быстрее вникнете в суть GNU/Linux.
 >Долго ли компилируются пакеты?
 Нет, особенно на современном железе. Ядро со всеми модулями на Intel Core i3 4330 собирается за 3 минуты и 23 секунды.
+>Правда что Gentoo потребляет меньше RAM?
+Да, особенно если собрирать с флагами CFLAGS="-Os" USE="-static -static-libs" и использовать wayland.
+>Какой будет прирост производительности относительно других ОС?
+Зависит от приложения, прирост 2-4 раза вполне реально получить.
+>Какие еще есть Gentoo-based  дистрибутивы?
+http://distrowatch.com/search.php?basedon=Gentoo
+https://wiki.gentoo.org/wiki/Distributions_based_on_Gentoo
+
+
+Установка:
+Данный гайд предназначен для того чтобы оптимизировать систему под современный 64-битный ПК, добится максимальной скорости, и помочь избежать распостраненных ошибок при установке.
+Это не замена офицеальной документации, ее все-равно прийдется придерживатся внося изменения на свой вкус. Это общие рекомендации, читать это надо перед установкой по хендбуку.
+1. Выбор Live CD
+Наиболие удобным и оптимальным считаю SystemRescueCD - поддерживает efi, имеет 64 битное ядро и графическую оболочку, совместим с Gentoo GNU/Linux.
+https://www.system-rescue-cd.org/Download
+2. Разметка диска.
+Для разметки диска есть множество утилит, предлагаю использовать fdisk, его преимеущество в том что он сначала сделает карту разметки, и только потом запишет изменения на диск. Чтобы начать наберите:
+fdisk -t gpt /dev/sda
+В утилите введете m для помощи.
+ g - Создаст новую GPT-разметку
+Типы разделов которые понадобятся:
+  1 EFI System Partition
+  24 Linux root (x86-64)
+  28 Linux home
+Еще есть parted, которым пользоватся может показатся проще, но он немедленно записывает изменения на диск.
+Собственно разметка:
+  1) EFI System Partition (33MB) - Здесь будет лежеть ядро весом мегабайт 5, больше 33 мегабайт не имеет смысла делать. 
+  2) Root (60GB)- системный раздел, нельзя делать его 10 гигабайтным даже если система вместится, при компиляции больших пакетов он будет переполнятся, временные файлы могут занимать 10-20 гигабайт.
+  3) Home - Ваша файлопомойка, здесь будут лежать все файлы что вы скачивате через торрент и браузер.
+Обычно во всяких дистрибутивах рекомендуется включать файл подкачки, но состоянием на 2016 это пережиток прошлого, если мало памяти то оптимизируйте систему под эффективное потребление памяти. Файл подкачки не решает проблему переполнения оперативной памяти, когда она переполняется ПК практически невозможно использовать что с файлом что без.
+3. Выбор stage3. 
+Рекомендую nomultilib - он не будет содержать 32-битного кода совершенно.
+5. make.conf
+В этом файле определяются основные параметры компиляции, Я опишу два стула - как сделать быструю или экономную систему, но выбрать можно что-то среднее.
+Путь к файлу: /etc/portage/make.conf
+Конфиг для быстрой системы:
+ #-m64 -masm=att/intel -pthread -ftree-parallelize-loops=4 -std=gnu11 -std=gnu++14 -эти опции никогда не задавайте, мало какой пакет с ними соберется
+ CFLAGS="-march=native -mtune=native -O2 -m64 -pipe" /native всегда лучше CPU-специфичного параметра, явное указание поколения подтянет опции доступные самому простому процессору из поколения.
+ CXXFLAGS="-march=native -mtune=native -O2 -m64 -pipe"
+ MAKEOPTS="-j4"  // Цифра - количество потоков
+ CHOST="x86_64-pc-linux-gnu"  // Это дефолты и перенастраивать их крайне нежелательно и не имеет смысла.
+ CPU_FLAGS_X86="" //Эту переменную можно заполнить флагами из cpuinfo или cat /proc/cpuinfo
+ CTARGET="x86_64-pc-linux-gnu"
+ USE="-fortran static static-libs"
+ #Уберет компилятор фортрана из gcc, статические библиотеки вызываются быстрее динамических, но потребляют больше памяти, еще поможет избежать проблем с зависимостями при обновлении библиотек
+ INPUT_DEVICES="evdev" //Если используете тачпад или графический планшет то прийдется добавить synaptics
+ ACCEPT_KEYWORDS="~amd64"  //Начет отображать бета-версии пакетов, как правило большинство из них офицеально стабильно. Без этой опции будут скачиватся довольно старые пакеты.
+Когнфиг для экономной системы отличается парой флагов:
+ CFLAGS="-march=native -mtune=native -Os -m64 -pipe"
+ CXXFLAGS="-march=native -mtune=native -Os -m64 -pipe"
+ USE="-fortran -static -static-libs"
+6. /etc/portage/package.use/localuses
+В этот файл добавим пару флагов, чтобы gcc собирался без фортрана, а ядро можно было оптимизировать под свою машину.
+  sys-power/suspend -crypt -lzo threads //Программа понадобится если хотите пользоватся спящим режимом, флаги я на свой вкус добавил.
+  sys-kernel/gentoo-sources symlink experimental //Включит патч для оптимизации под свое железо
+                      //При конфигурировании ядра в настройках процессора выберете Processor family (Native optimizations autodetected by GCC)  ---> 
+  sys-devel/gcc -fortran
+7. Обновление GCC
+Для обновления компилятора просто введите в терминал
+emerge --ask sys-devel/gcc
+Компилятор соберется под ваше железо, станет быстрее компилировать, и лучше оптимизировать, можно пересобрать второй раз чтобы он сам собой был собраным.
+cmake тоже не лишним будет обновить и пересобрать под ваше железо.
+emerge --ask dev-util/cmake
+8. Конфигурирование ядра
+Ядро сжимать лучше алгоритмом lz4, чтобы установить архиватор выполните:
+emerge --ask app-arch/lz4
+В конфигурации ядра выберете этот алгоритм:
+General setup>
+    Kernel compression mode (LZ4)  --->
+Потом включите автоопределение процессора компилятором:
+    Processor type and features  --->
+          Processor family (Native optimizations autodetected by GCC)  --->
+Обязательно прочтите эту статью если решили не использовать загрузчика, и грузить ядро из биоса:
+  https://wiki.gentoo.org/wiki/EFI_stub_kernel
+А также почти все остальное будет полезным перед или во время конфигурации:
+  https://wiki.gentoo.org/wiki/Kernel/Configuration
+  https://wiki.gentoo.org/wiki/Kernel/Gentoo_Kernel_Configuration_Guide
+  https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Kernel
+  http://swift.siphos.be/linux_sea/kernelbuilding.html
+9. Заключительные шаги.
+passwd - введите пароль для рута, пользователя добавите уже когда загрузитесь в систему.
+
+10. Установка графической оболочки.
+Приведены ссылки по вейланду, с иксами проблем никаких не будет.
+Wayland
+http://www.chaosreigns.com/wiki/Main_Page
+http://www.phoronix.com/scan.php?page=news_item&px=Intel-Ozone-Wayland-Continues
+https://wayland.freedesktop.org/
+http://projects.genivi.org/wayland-ivi-extension/
+http://losst.ru/testirovanie-wayland-v-gentoo
+https://wiki.gentoo.org/wiki/Wayland
+https://en.wikipedia.org/wiki/Wayland_(display_server_protocol
+https://wiki.archlinux.org/index.php/wayland
+https://forums.gentoo.org/viewtopic-p-7486872.html#7486872
+https://m.reddit.com/r/Gentoo/comments/2e1rn5/wayland_on_gentoo_any_updates/
+https://packages.gentoo.org/packages/dev-libs/sway
+https://packages.gentoo.org/packages/dev-libs/weston
+
+А что теперь? Я итак уже гений!
+
+Гайды по установке.
+На русском:
+https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation/ru
+https://lisakov.com/blog/gentoo-for-goofy/
+http://www.unix-lab.org/posts/install-gentoo/
+http://nix-sa.blogspot.com/2011/09/gentoo-1.html
+На английском:
+https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation
+http://swift.siphos.be/linux_sea/installgentoo.html
+https://wiki.installgentoo.com/index.php/Gentoo#Installation_method
+http://www.unixmen.com/a-beginners-guide-to-install-gentoo/
+http://www.wikihow.com/Install-Gentoo-Linux-from-Ubuntu
+http://www.tecmint.com/gentoo-linux-installation-guide/
+
 Ссылки на шапку:
 Сюда коммитить, и комментировать:
 https://github.com/DmitriyHetman/gentoo/edit/beta/Install_guide/RU/Install-Gentoo
