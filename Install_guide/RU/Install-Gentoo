@@ -44,6 +44,7 @@ fdisk -t gpt /dev/sda
   1) EFI System Partition (33MB) - Здесь будет лежеть ядро весом мегабайт 5, больше 33 мегабайт не имеет смысла делать. 
   2) Root (60GB)- системный раздел, нельзя делать его 10 гигабайтным даже если система вместится, при компиляции больших пакетов он будет переполнятся, временные файлы могут занимать 10-20 гигабайт.
   3) Home - Ваша файлопомойка, здесь будут лежать все файлы что вы скачивате через торрент и браузер.
+Обычно во всяких дистрибутивах рекомендуется включать файл подкачки, но состоянием на 2016 это пережиток прошлого, если мало памяти то оптимизируйте систему под эффективное потребление памяти. Файл подкачки не решает проблему переполнения оперативной памяти, когда она переполняется ПК практически невозможно использовать что с файлом что без.
 3. Выбор stage3. 
 Рекомендую nomultilib - он не будет содержать 32-битного кода совершенно.
 5. make.conf
@@ -116,9 +117,17 @@ https://packages.gentoo.org/packages/dev-libs/weston
 
 Гайды по установке.
 На русском:
-
+https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation/ru
+https://lisakov.com/blog/gentoo-for-goofy/
+http://www.unix-lab.org/posts/install-gentoo/
+http://nix-sa.blogspot.com/2011/09/gentoo-1.html
 На английском:
-
+https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation
+http://swift.siphos.be/linux_sea/installgentoo.html
+https://wiki.installgentoo.com/index.php/Gentoo#Installation_method
+http://www.unixmen.com/a-beginners-guide-to-install-gentoo/
+http://www.wikihow.com/Install-Gentoo-Linux-from-Ubuntu
+http://www.tecmint.com/gentoo-linux-installation-guide/
 
 Ссылки на шапку:
 Сюда коммитить, и комментировать:
