@@ -111,11 +111,7 @@ General setup>
 Потом включите автоопределение процессора компилятором:
     Processor type and features  --->
           Processor family (Native optimizations autodetected by GCC)  --->
-Обязательно прочтите эту статью если решили не использовать загрузчика, и грузить ядро из биоса(efi-stub kernel):
-  https://wiki.gentoo.org/wiki/EFI_stub_kernel
-И еще пара о том-же:
-  https://lorwiki.ru/wiki/%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0_Linux_%D0%BD%D0%B0_EFI
-  https://wiki.gentoo.org/wiki/Efibootmgr   (Но ядро загрузится и без него)
+
 А также почти все остальное будет полезным перед или во время конфигурации:
   https://wiki.gentoo.org/wiki/Kernel/Configuration
   https://wiki.gentoo.org/wiki/Kernel/Gentoo_Kernel_Configuration_Guide
@@ -126,6 +122,32 @@ General setup>
   HOSTCXXFLAGS = -march=native -mtune=native -m64 -pipe
   KBUILD_CFLAGS = -march=native -mtune=native -m64 -pipe
 В первых двух можно заменить O2 на Os, если у вас мало оперативной памяти. Если мало памяти так-же нужно поставить флаг optimize for size в конфиге ядра.
+
+Обязательно прочтите эту статью если решили не использовать загрузчика, и грузить ядро из биоса(efi-stub kernel):
+  https://wiki.gentoo.org/wiki/EFI_stub_kernel
+И еще пара о том-же:
+  https://lorwiki.ru/wiki/%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0_Linux_%D0%BD%D0%B0_EFI
+  https://wiki.gentoo.org/wiki/Efibootmgr   (Но ядро загрузится и без него)
+Короткий гайд по efi-stub kernel:
+Прописываем в /etc/fstab наш раздел как /boot.
+>/dev/sda1 /boot vfat noauto 0 0
+Далее монтируем получившийся раздел
+>mount /boot
+2) Компилируем efistub kernel (не забываем в kernel commandline указать / раздел. root=/dev/sdX)
+
+3) Устанавливаем скомпилированное ядро в /boot
+>make install && make modules_install
+4) Копируем ядро в папку в раздел efi, где оно будет доступно для загрузки из UEFI
+> cp /boot/vmlinuz-* /boot/EFI/gentoo/bootx64.efi
+
+4) Емержим efibootmgr, понадобится нам для того чтобы указать UEFI где находится наше ядро и подписать его.
+>sudo emerge efibootmgr
+
+5) Записываем данные о ядре в UEFI
+>efibootmgr -c -d /dev/sdX -p 2 -L «gentoo» -l '\EFI\gentoo\bootx64.efi'
+
+6) посмотреть удачно ли записалась информация в загрузчик
+>efibootmgr -v
 
 9. Заключительные шаги.
 passwd - введите пароль для рута, пользователя добавите уже когда загрузитесь в систему.
