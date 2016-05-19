@@ -23,7 +23,8 @@ Gentoo GNU/Linux это не просто конструктор как Arch и 
 >Какие еще есть Gentoo-based  дистрибутивы?
 http://distrowatch.com/search.php?basedon=Gentoo
 https://wiki.gentoo.org/wiki/Distributions_based_on_Gentoo
-
+>Кококок ШАПКА ПЛОХАЯ!!!
+Дочитай ее до конца и улучшай если считаешь ее плохой. В конце ссылка на github.
 
 Установка:
 Данный гайд предназначен для того чтобы оптимизировать систему под современный 64-битный ПК, добится максимальной скорости, и помочь избежать распостраненных ошибок при установке.
@@ -145,6 +146,12 @@ https://wiki.installgentoo.com/index.php/Gentoo#Installation_method
 http://www.unixmen.com/a-beginners-guide-to-install-gentoo/
 http://www.wikihow.com/Install-Gentoo-Linux-from-Ubuntu
 http://www.tecmint.com/gentoo-linux-installation-guide/
+
+Шифрование и безопасность:
+https://wiki.installgentoo.com/index.php?title=Anonymizing_yourself&redirect=no
+http://www.unshackledmind.net/2013/05/gentoo-full-disk-encryption/
+https://wiki.installgentoo.com/index.php/Encryption
+https://wiki.installgentoo.com/index.php/DNSCrypt
 
 Ссылки на шапку:
 Сюда коммитить, и комментировать:
