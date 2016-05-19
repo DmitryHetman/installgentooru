@@ -95,6 +95,11 @@ General setup>
   https://wiki.gentoo.org/wiki/Kernel/Gentoo_Kernel_Configuration_Guide
   https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Kernel
   http://swift.siphos.be/linux_sea/kernelbuilding.html
+После того как отконфигурировали ядро можно отредактировать Makefile добавив флагов оптимизации в переменные:
+  HOSTCFLAGS = -march=native -mtune=native -m64 -pipe
+  HOSTCXXFLAGS = -march=native -mtune=native -m64 -pipe
+  KBUILD_CFLAGS = -march=native -mtune=native -m64 -pipe
+В первых двух можно заменить O2 на Os, если у вас мало оперативной памяти. Если мало памяти так-же нужно поставить флаг optimize for size в конфиге ядра.
 9. Заключительные шаги.
 passwd - введите пароль для рута, пользователя добавите уже когда загрузитесь в систему.
 
