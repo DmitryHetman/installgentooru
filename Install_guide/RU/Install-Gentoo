@@ -63,15 +63,15 @@ https://wiki.gentoo.org/wiki/Ext4
 mkfs.f2fs -c -c /dev/sda2
 
 4. Выбор stage3. 
-Рекомендую nomultilib - он не будет содержать 32-битного кода совершенно.
+Рекомендую nomultilib - он не будет содержать 32-битного кода совершенно. Multilib нужен если вам нужен wine.
 
 5. make.conf
 В этом файле определяются основные параметры компиляции, Я опишу два стула - как сделать быструю или экономную систему, но выбрать можно что-то среднее.
 Путь к файлу: /etc/portage/make.conf
 Конфиг для быстрой системы:
- #-m64 -masm=att/intel -pthread -ftree-parallelize-loops=4 -std=gnu11 -std=gnu++14 -эти опции никогда не задавайте, мало какой пакет с ними соберется
-  CFLAGS="-march=native -mtune=native -O2 -m64 -pipe" /native всегда лучше CPU-специфичного параметра, явное указание поколения подтянет опции доступные самому простому процессору из поколения.
-  CXXFLAGS="-march=native -mtune=native -O2 -m64 -pipe"
+ #-masm=att/intel -pthread -ftree-parallelize-loops=4 -std=gnu11 -std=gnu++14 -эти опции никогда не задавайте, мало какой пакет с ними соберется
+  CFLAGS="-march=native -mtune=native -O2 -m64 -pipe" //native всегда лучше CPU-специфичного параметра, явное указание поколения подтянет опции доступные самому простому процессору из поколения.
+  CXXFLAGS="-march=native -mtune=native -O2 -m64 -pipe" //Если вы выбрали multilib, то не пишите -m64
   MAKEOPTS="-j4"  // Цифра - количество потоков
   CHOST="x86_64-pc-linux-gnu"  // Это дефолты и перенастраивать их крайне нежелательно и не имеет смысла.
   CPU_FLAGS_X86="" //Эту переменную можно заполнить флагами из cpuinfo или cat /proc/cpuinfo
