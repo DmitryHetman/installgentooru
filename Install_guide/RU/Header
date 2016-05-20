@@ -28,7 +28,7 @@ https://wiki.gentoo.org/wiki/Distributions_based_on_Gentoo
 Дочитай ее до конца и улучшай если считаешь ее плохой. В конце ссылка на github, делай пулл-реквесты, форкай, пиши с нуля.
 
 Install Gentoo GNU/Linux Guide:
-
+https://github.com/DmitriyHetman/gentoo/blob/master/Install_guide/RU/Install-Gentoo
 
 Шифрование и безопасность:
 https://wiki.gentoo.org/wiki/Dm-crypt
@@ -43,3 +43,4 @@ https://github.com/DmitriyHetman/gentoo/blob/beta/Install_guide/RU/Header
 Отсюда брать стабильную шапку:
 https://github.com/DmitriyHetman/gentoo/blob/master/Install_guide/RU/Header
 Cсылка для редактирования гайда:
+https://github.com/DmitriyHetman/gentoo/blob/beta/Install_guide/RU/Install-Gentoo
