@@ -1,32 +1,3 @@
-Это Gentoo GNU/Linux тред, в котором анон задает вопросы и получает на них ответы. Борьба с зависимостями. сборка ядра ручками. Швабодка, попенсорс, сборка из исходничков под себя, все это итт прямо здесь и сейчас!
-Не знаешь, чем заняться в вечер пятницы? И не узнаешь, потому что не знаешь какой уже день компилируется @world или libre office.
-Девушка собралась быстрее генты? Этого не может быть, ведь тебе больше не нужна девушка.
-Борода? Возможно. В Gentoo GNU/Linux возможно все.
-Обновить систему за ночь? Легко, просто поспи неделю!
-Новая кофеварка? Накати на нее Gentoo GNU/Linux.
-Гента! Дженту! Линукс! Свидетели вендекапца ITT!
-Предыдущий:
-
-FAQ:
->Что такое Gentoo GNU/Linux
-Gentoo это элитный source-based GNU/Linux дистрибутив, элитный потому как остальные source-based слишком неудобны и не автоматизированы, хотя есть Funtoo - почти то-же самое что Gentoo.
->В чем преимущество Gentoo GNU/Linux?
-Gentoo GNU/Linux предоставляет полную свободу выбора всего и вся, вы сами решаете как будет работать ваш дистрибутив, именно поэтому Gentoo GNU/Linux имеет абсолютное превосходство над любыми ОС в любом спектре задач.
-Gentoo GNU/Linux это не просто конструктор как Arch и минимальный Debian, здесь возможности гораздо шире, ведь есть доступ к более низкому уровню блягодаря глобальным и локальным USE-флагам.
-В Gentoo ты никогда не платишь за то, что не используешь.
-С помощью Gentoo вы гораздо быстрее вникнете в суть GNU/Linux.
->Долго ли компилируются пакеты?
-Нет, особенно на современном железе. Ядро со всеми модулями на Intel Core i3 4330 собирается за 3 минуты и 23 секунды.
->Правда что Gentoo потребляет меньше RAM?
-Да, особенно если собрирать с флагами CFLAGS="-Os" USE="-static -static-libs" и использовать wayland.
->Какой будет прирост производительности относительно других ОС?
-Зависит от приложения, прирост 2-4 раза вполне реально получить.
->Какие еще есть Gentoo-based  дистрибутивы?
-http://distrowatch.com/search.php?basedon=Gentoo
-https://wiki.gentoo.org/wiki/Distributions_based_on_Gentoo
->Кококок ШАПКА ПЛОХАЯ!!!
-Дочитай ее до конца и улучшай если считаешь ее плохой. В конце ссылка на github.
-
 Установка:
 Данный гайд предназначен для того чтобы оптимизировать систему под современный 64-битный ПК, добится максимальной скорости, и помочь избежать распостраненных ошибок при установке.
 Это не замена офицеальной документации, ее все-равно прийдется придерживатся внося изменения на свой вкус. Это общие рекомендации, читать это надо перед установкой по хендбуку.
@@ -152,7 +123,19 @@ General setup>
 9. Заключительные шаги.
 passwd - введите пароль для рута, пользователя добавите уже когда загрузитесь в систему.
 
-10. Установка графической оболочки.
+10. Настройка fstab
+/etc/fstab
+#noatime,nobarrier,noinit_itable,nouser_xattr,noacl,noexec,nosuid,nodev                //флаги которые вам могут понадобится
+/dev/sda2 /                     ext4   noatime,nobarrier,nouser_xattr,noacl       0 0  //noacl - вполне себе нармальная опция, а вот от атрибутов вам вряд-ли удастся избавится.
+/dev/sda1 /boot                 vfat   noauto,noatime,noexec,nosuid,nodev         0 0
+/dev/sda3 /home/dmitriy/files/        ext4   noatime,nobarrier,nouser_xattr,noacl 0 0 //файлопомойка не лежит прямо в юзере или хоме, таким образом конфигов и исполняемых файлов в файлопомойке не будет, что оптимизирует работу пк если у вас SSD
+shm       /tmp/                 tmpfs  size=3968M                                 0 0 // Временные файлы хранятся в оперативной памяти, память свободна если там ничего не лежит
+shm       /var/tmp/             tmpfs  size=3968M                                 0 0 \\ Это ускорит процесс компиляции, и еще много всяких процессов. Подробности в ссылках ниже:
+https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs
+https://wiki.gentoo.org/wiki/Tmpfs
+
+
+11. Установка графической оболочки.
 Приведены ссылки по вейланду, с иксами проблем никаких не будет.
 Wayland
 http://www.chaosreigns.com/wiki/Main_Page
@@ -182,15 +165,3 @@ https://wiki.installgentoo.com/index.php/Gentoo#Installation_method
 http://www.unixmen.com/a-beginners-guide-to-install-gentoo/
 http://www.wikihow.com/Install-Gentoo-Linux-from-Ubuntu
 http://www.tecmint.com/gentoo-linux-installation-guide/
-
-Шифрование и безопасность:
-https://wiki.installgentoo.com/index.php?title=Anonymizing_yourself&redirect=no
-http://www.unshackledmind.net/2013/05/gentoo-full-disk-encryption/
-https://wiki.installgentoo.com/index.php/Encryption
-https://wiki.installgentoo.com/index.php/DNSCrypt
-
-Ссылки на шапку:
-Сюда коммитить, и комментировать:
-https://github.com/DmitriyHetman/gentoo/blob/beta/Install_guide/RU/Install-Gentoo
-Отсюда брать стабильную шапку:
-https://github.com/DmitriyHetman/gentoo/blob/master/Install_guide/RU/Install-Gentoo
