@@ -70,19 +70,23 @@ mkfs.f2fs -c -c /dev/sda2
 Путь к файлу: /etc/portage/make.conf
 Конфиг для быстрой системы:
  #-masm=att/intel -pthread -ftree-parallelize-loops=4 -std=gnu11 -std=gnu++14 -эти опции никогда не задавайте, мало какой пакет с ними соберется, а если соберется не факт что будет польза.
-  CFLAGS="-march=native -mtune=native -O2 -m64 -pipe" //native всегда лучше CPU-специфичного параметра, явное указание поколения подтянет опции доступные самому простому процессору из поколения.
-  CXXFLAGS="-march=native -mtune=native -O2 -m64 -pipe" //Если вы выбрали multilib, то не пишите -m64
+  CFLAGS="-march=native -mtune=native -O2 -pipe" //native всегда лучше CPU-специфичного параметра, явное указание поколения подтянет опции доступные самому простому процессору из поколения.
+  CXXFLAGS="-march=native -mtune=native -O2 -pipe"
+  //Можете добавить -m64 чтобы явно указать компилятору собирать 64-битные пакеты
+  //Если вы выбрали multilib, то не пишите -m64
   MAKEOPTS="-j4"  // Цифра - количество потоков
   CHOST="x86_64-pc-linux-gnu"  // Это дефолты и перенастраивать их крайне нежелательно и не имеет смысла.
   CPU_FLAGS_X86="" //Эту переменную можно заполнить флагами из cpuinfo или cat /proc/cpuinfo
   CTARGET="x86_64-pc-linux-gnu"
- USE="-fortran static static-libs" //Имейте в виду что при обновлении одной библиотеки прийдется пересобирать эти библиотеки для каждого пакета, статические библиотеки занимают больше места на диске и в оперативной памяти, так что может быть лучше их отключить. Если включить то собраные бинарники должны работать немного быстрее.
+ USE="-fortran -static -static-libs"
+ //Вы можете включить статические библиотеки, это должно дать прирост производительности, но приведет к некоторым неудобствам.
+ //Имейте в виду что если выбрали статически линкованые бинарники при обновлении одной библиотеки прийдется пересобирать эти библиотеки для каждого пакета, статические библиотеки занимают больше места на диске и в оперативной памяти, так что может быть лучше их отключить. Если включить то собраные бинарники должны работать немного быстрее.
  #Уберет компилятор фортрана из gcc, статические библиотеки вызываются быстрее динамических, но потребляют больше памяти, еще поможет избежать проблем с зависимостями при обновлении библиотек
   INPUT_DEVICES="evdev" //Если используете тачпад или графический планшет то прийдется добавить synaptics
   ACCEPT_KEYWORDS="~amd64"  //Начет отображать бета-версии пакетов, как правило большинство из них офицеально стабильно. Без этой опции будут скачиватся довольно старые пакеты.
 Когнфиг для экономной системы отличается парой флагов:
-  CFLAGS="-march=native -mtune=native -Os -m64 -pipe"
-  CXXFLAGS="-march=native -mtune=native -Os -m64 -pipe"
+  CFLAGS="-march=native -mtune=native -Os -pipe"
+  CXXFLAGS="-march=native -mtune=native -Os -pipe"
   USE="-fortran -static -static-libs"
 Если вам интересно посмотреть на готовый make.conf для Intel Core i3 4330 с встроеной графикой можете посмотреть здесь:  https://github.com/DmitriyHetman/gentoo/blob/master/make.conf
 6. /etc/portage/package.use/localuses
@@ -118,9 +122,9 @@ General setup>
   https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Kernel
   http://swift.siphos.be/linux_sea/kernelbuilding.html
 После того как отконфигурировали ядро можно отредактировать Makefile добавив флагов оптимизации в переменные:
-  HOSTCFLAGS = -march=native -mtune=native -m64 -pipe
-  HOSTCXXFLAGS = -march=native -mtune=native -m64 -pipe
-  KBUILD_CFLAGS = -march=native -mtune=native -m64 -pipe
+  HOSTCFLAGS = -march=native -mtune=native -pipe \\Я добавляю в эти переменные -m64, а в конфиге ядра отключаю эмуляцию 32 бит, моя система полностью состоит из 64-битных ELF-бинарников.
+  HOSTCXXFLAGS = -march=native -mtune=native -pipe
+  KBUILD_CFLAGS = -march=native -mtune=native -pipe
 В первых двух можно заменить O2 на Os, если у вас мало оперативной памяти. Если мало памяти так-же нужно поставить флаг optimize for size в конфиге ядра.
 
 Обязательно прочтите эту статью если решили не использовать загрузчика, и грузить ядро из биоса(efi-stub kernel):
