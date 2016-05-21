@@ -195,3 +195,6 @@ https://news.ycombinator.com/item?id=2521820
 https://github.com/wbsun/kgpu
 https://github.com/wbsun/kgpu/wiki/KGPU---Home
 https://www.flux.utah.edu/project/kgpu
+
+Скрипты для бекапа конфигов и вывода информации о железе:
+https://github.com/DmitriyHetman/gentoo/tree/master/Scripts
