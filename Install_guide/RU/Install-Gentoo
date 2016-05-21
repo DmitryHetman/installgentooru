@@ -141,10 +141,11 @@ https://wiki.gentoo.org/wiki/Tmpfs
 
 11. Установка графической оболочки.
 Приведены ссылки по вейланду, с иксами проблем никаких не будет.
+Новичкам поясняю что xorg-server сильно устарел, содержит массу ненужных компонентов, поэтому команда x.org взялась за новый протокол, на который уже перешли основные дистрибутивы GNU/Linux.
 Wayland
+https://wayland.freedesktop.org/
 http://www.chaosreigns.com/wiki/Main_Page
 http://www.phoronix.com/scan.php?page=news_item&px=Intel-Ozone-Wayland-Continues
-https://wayland.freedesktop.org/
 http://projects.genivi.org/wayland-ivi-extension/
 http://losst.ru/testirovanie-wayland-v-gentoo
 https://wiki.gentoo.org/wiki/Wayland
