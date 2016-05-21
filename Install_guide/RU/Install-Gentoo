@@ -38,7 +38,20 @@ mkfs.f2fs -c -c /dev/sda2
 4. Выбор stage3. 
 Рекомендую nomultilib - он не будет содержать 32-битного кода совершенно. Multilib нужен если вам нужен wine, 32-битные библиотеки или бинарники.
 Еще есть uclibc - маленький и годный вариант для встраиваемых систем, но почему бы не накатить на свой пк, особенно если мало памяти или хочется еще больше производительности? Сам Я пока не пробывал его на своем десктопе, но собираюсь.
-
+uclib/musl могут не поддерживать некоторые пакеты с некоторыми флагами, прежде чем просто устанавливать надо прочитать документацию и HOWTO/README-файлы, добавить оверлеи c патчами, обновлятся как там написано.
+Можете прочитать так-же про эти либы:
+http://www.etalabs.net/compare_libcs.html
+https://blogs.gentoo.org/blueness/2015/08/04/alt-libc-the-state-of-uclibc-and-musl-in-gentoo-part-1/
+uclibc:
+https://wiki.gentoo.org/wiki/Project:Hardened_uClibc
+http://opensource.dyc.edu/node/345
+http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-uclibc-hardened/
+https://dev.gentoo.org/~vapier/uclibc/uclibc.txt
+https://wiki.gentoo.org/wiki/Project:Hardened_uClibc/Lilblue
+musl:
+https://wiki.gentoo.org/wiki/Project:Hardened_musl
+http://distfiles.gentoo.org/experimental/amd64/musl/
+https://wiki.gentoo.org/wiki/Project:Hardened_musl/Bluedragon
 5. make.conf
 В этом файле определяются основные параметры компиляции, Я опишу два стула - как сделать быструю или экономную систему, но выбрать можно что-то среднее.
 Путь к файлу: /etc/portage/make.conf
