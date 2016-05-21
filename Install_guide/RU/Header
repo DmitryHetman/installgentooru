@@ -27,6 +27,17 @@ https://wiki.gentoo.org/wiki/Distributions_based_on_Gentoo
 >Кококок ШАПКА ПЛОХАЯ!!!
 Дочитай ее до конца и улучшай если считаешь ее плохой. В конце ссылка на github, делай пулл-реквесты, форкай, пиши с нуля.
 
+Краткий список преимуществ над остальными дистрибутивами:
+1. Rolling release
+2. Source-based
+3. Множество оверлеев
+4. Wayland-ready
+5. Гибкость
+6. Производительность
+7. Экономия ресурсов
+8. Безопасность
+9. Стабильность
+
 Install Gentoo GNU/Linux Tips and Tricks:
 https://github.com/DmitriyHetman/gentoo/blob/master/Install_guide/RU/Install-Gentoo
 

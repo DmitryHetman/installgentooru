@@ -1,0 +1,61 @@
+#!/bin/bash
+if [ $# -eq 0 ] ; then
+        echo -e "Enter output directory! \n"
+        echo -e "To save all CPU flags directory must be mounted with execution rights\n"
+        echo -e "Usage: \nchwinfo <directory>"
+        echo 'Every absolute or relative path must end with slash "/"'
+        echo -e "\nThis script return \n0 - work finished \n1 - wrong quantity of arguments, \n2 - not existing folders given \n3 - no arguments given"
+        exit 3
+elif [ $# -gt 1 ] ; then
+        echo "To many arguments given, only one folder expected!"
+        exit 1
+elif [ -d ${1} ]
+   then
+        echo -e "\n\t Saving hardware info: \n"
+
+                #Saving files from /proc - Kernel and process information virtual filesystem
+                        mkdir -pv ${1}proc
+                        for FILE in cpuinfo fb filesystems devices misc modules partitions cmdline mtrr
+                        do
+                        cp -v /proc/${FILE} ${1}proc/${FILE}
+                        done
+                                if [ $UID -ne 0 ]
+                                then
+                                         echo -e "\t To execute lspci you should have root acces!"
+                                else
+                                        lspci -vv > ${1}lspci
+                                        #insert your '-march=' flag(s) to this loop
+                                        for MARCH in native
+                                        do
+                                        touch ${1}${MARCH}.cc ${1}march.cc
+                                        cd ${1}; gcc -fverbose-asm "-march=${MARCH}" ${MARCH}.cc -S
+                                        cd ../
+                                        done
+                                        rm -v ${1}*.cc
+                                        #Comment next two lines if you test two -march flags
+                                        #diff ${1}*.s --side-by-side > ${1}march
+                                        #rm -v ${1}*.s
+                                fi
+
+                        rm -v /tmp/alsa-info.txt.*
+                        alsa-info.sh
+                        cp -v /tmp/alsa-info.txt.* ${1}
+
+                #Single-command tools
+                        emerge --info > ${1}emerge
+                        ifconfig -a > ${1}ifconfig
+                        ip addr > ${1}ip
+                        env > ${1}env
+                        hdparm -Iq /dev/sda > ${1}hdparm
+                        lshw > ${1}lshw
+                        dmesg > ${1}dmesg
+                        lsmod > ${1}lsmod
+                        blkid > ${1}blkid
+                        lscpu > ${1}lscpu
+                        lsblk > ${1}lsblk
+
+                        echo -e "\t \n Configs Saved"
+                        exit 0
+else
+   echo "${1} is not a directory!"
+fi

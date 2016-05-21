@@ -1,0 +1,84 @@
+#!/bin/bash
+NODIR='is not a directory!'
+if [ $# -eq 0 ]
+    then
+        echo -e "Enter intut and output directory!\nSyntax:"
+        echo -e "\t ${0##*/} <Input path/> <Output path/> <options>"
+        echo 'Options:'
+        echo "-hw -- Include info about current hardvare and kernel modules for it, don't use it for restoring configs!"
+        echo  -e "To save all CPU flags backup directory must be mounted with execution rights\n"
+        echo "From first argument ${0##*/} read config files and instert them to output directory"
+        echo 'Every absolute or relative path must end with slash "/"'
+        echo 'For instance:'
+        echo -e "\t ${0##*/} / docs/bacupfolder/ -hw"
+        echo -e "\t ${0##*/} docs/backupfolder/ /"
+        echo -e "\t ${0##*/} <path to root/> <path to backup folder/> <flags> (Save backup)"
+        echo -e "\t ${0##*/} <path to backup folder/> <path to root/> (Restore configs from backup)"
+        echo -e "\nThis script return \n0 - work finished \n1 - wrong quantity of arguments\n2 - not existing folders given \n3 - hwinfo not finished correct\n4 - no arguments given"
+        exit 4
+elif [ $# -gt 3 ]
+    then
+        if [ $# -eq 1  ]
+                then
+                        echo 'Too few arguments! Two expected'
+                else
+                        echo "$# is too many arguments! Enter input and otput folder"
+        fi
+        exit 1
+elif [ -d $1 ]
+  then
+     if [ -d $2 ]
+        then
+                echo -e "\t Saving configs: \n"
+                KEY="etc/portage/package.accept_keywords"
+                USE="etc/portage/package.use"
+                MASK="etc/portage/package.mask"
+                VAR="var/lib/portage"
+                XORG="etc/X11/xorg.conf.d"
+                LINUX=`cd ${1}usr/src/linux-* ; pwd`
+
+                  mkdir -pv ${2}${USE}
+                  mkdir -pv ${2}${MASK}
+                  mkdir -pv ${2}${KEY}
+                  mkdir -pv ${2%/}${LINUX}config
+                  mkdir -pv ${2}${VAR}
+                  mkdir -pv ${2}etc/portage/repos.conf
+                  mkdir -pv ${2}${XORG}
+                  mkdir -pv ${2}usr/bin/
+
+                        cp -v "${1}etc/portage/make.conf" ${2}etc/portage/
+                        cp -v ${1}${USE}/* ${2}${USE}/
+                        cp -v ${1}${KEY}/* ${2}${KEY}/
+                        cp -v ${1}${MASK}/* ${2}${MASK}/
+                        cp -v ${1}${VAR}/world ${2}${VAR}/
+                        cp -v ${LINUX}/.config ${2}${LINUX}config/
+                        cp -v ${1}${XORG}/20-intel.conf ${2}${XORG}/
+                        cp -v ${1}etc/portage/repos.conf/* ${2}etc/portage/repos.conf/
+
+                                #Save cofing files in/from etc/
+                                for CONF in rc.conf fstab DIR_COLORS asound.conf mke2fs.conf
+                                do
+                                cp -v ${1}etc/${CONF} ${2}etc/${CONF}
+                                done
+#Save scripts
+                        for SCRIPT in confbackup hwinfo ktmcheck
+                        do
+                        cp -v ${1}usr/bin/${SCRIPT} ${2}usr/bin/
+                        done
+
+                #Saving hardware files (save info from current system)
+                if [ "$3" = "-hw" ]
+                then
+                   hwinfo ${2} &&  exit 0 || exit 3
+                else
+                        echo -e "\t Backup finished \n"
+                fi
+                exit 0
+            else
+                echo "$2 ${NODIR}"
+           fi
+           exit 2
+    else
+        echo "$1 ${NODIR}"
+        exit 2
+fi
