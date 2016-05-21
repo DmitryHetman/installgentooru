@@ -52,6 +52,7 @@ musl:
 https://wiki.gentoo.org/wiki/Project:Hardened_musl
 http://distfiles.gentoo.org/experimental/amd64/musl/
 https://wiki.gentoo.org/wiki/Project:Hardened_musl/Bluedragon
+Имейте в виду что на nomultilib/musl/uclibc речи о запуске 32 битных ELF не идет, на счастье уже не 2002 и все можно скомпилировать под 64 бита, но игроделы этому не научились так что с этими профилями вам непаиграть (разве что в опенсорс-игры), стим вроде на эти профили тоже не ставится.
 5. make.conf
 В этом файле определяются основные параметры компиляции, Я опишу два стула - как сделать быструю или экономную систему, но выбрать можно что-то среднее.
 Путь к файлу: /etc/portage/make.conf
