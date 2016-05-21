@@ -27,7 +27,7 @@ https://wiki.gentoo.org/wiki/Distributions_based_on_Gentoo
 >Кококок ШАПКА ПЛОХАЯ!!!
 Дочитай ее до конца и улучшай если считаешь ее плохой. В конце ссылка на github, делай пулл-реквесты, форкай, пиши с нуля.
 
-Install Gentoo GNU/Linux Guide:
+Install Gentoo GNU/Linux Tips and Tricks:
 https://github.com/DmitriyHetman/gentoo/blob/master/Install_guide/RU/Install-Gentoo
 
 Шифрование и безопасность:
@@ -36,6 +36,7 @@ https://wiki.installgentoo.com/index.php?title=Anonymizing_yourself&redirect=no
 http://www.unshackledmind.net/2013/05/gentoo-full-disk-encryption/
 https://wiki.installgentoo.com/index.php/Encryption
 https://wiki.installgentoo.com/index.php/DNSCrypt
+http://nix-sa.blogspot.com/2012/03/truecrypt-gentoo-calculate-linux.html
 
 Ускорение ядра с помощью CUDA:
 http://hackaday.com/2012/12/14/leveraging-the-gpu-to-accelerate-the-linux-kernel/
