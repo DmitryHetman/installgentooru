@@ -1,0 +1,9 @@
+#!/bin/bash
+for (( X = 0 ; X < 256 ; X++ ))
+  do
+        for (( Y = 180; Y < 191; Y++))
+        do
+          curl -m 1 109.196.${Y}.${X} && echo 109.196.${Y}.${X} >> ktmip
+        done
+  done
+exit 0
