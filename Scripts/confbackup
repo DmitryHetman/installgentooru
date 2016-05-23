@@ -10,7 +10,7 @@ if [ $# -eq 0 ]
         echo "From first argument ${0##*/} read config files and instert them to output directory"
         echo 'Every absolute or relative path must end with slash "/"'
         echo 'For instance:'
-        echo -e "\t ${0##*/} / docs/bacupfolder/ -hw"
+        echo -e "\t ${0##*/} / docs/backupfolder/ -hw"
         echo -e "\t ${0##*/} docs/backupfolder/ /"
         echo -e "\t ${0##*/} <path to root/> <path to backup folder/> <flags> (Save backup)"
         echo -e "\t ${0##*/} <path to backup folder/> <path to root/> (Restore configs from backup)"
