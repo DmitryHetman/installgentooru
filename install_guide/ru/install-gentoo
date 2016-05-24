@@ -63,9 +63,9 @@ http://resources.infosecinstitute.com/gentoo-hardening-part-1-introduction-harde
 В этом файле определяются основные параметры компиляции, Я опишу два стула - как сделать быструю или экономную систему, но выбрать можно что-то среднее.
 Путь к файлу: /etc/portage/make.conf
 Конфиг для быстрой системы:
- #-masm=att/intel -pthread -ftree-parallelize-loops=4 -std=gnu11 -std=gnu++14 -эти опции никогда не задавайте, мало какой пакет с ними соберется, а если соберется не факт что будет польза.
-  CFLAGS="-march=native -mtune=native -O2 -pipe" //native всегда лучше CPU-специфичного параметра, явное указание поколения подтянет опции доступные самому простому процессору из поколения.
-  CXXFLAGS="-march=native -mtune=native -O2 -pipe"
+ #-masm=att/intel -pthread -mtune= -m64 -m32 -mcpu= -ftree-parallelize-loops= -std=gnu11 -std=gnu++14 - осторожно, не каждый пакет соберется с этими опциями.
+  CFLAGS="-march=native -O2 -pipe" //native всегда лучше CPU-специфичного параметра, явное указание поколения подтянет опции доступные самому простому процессору из поколения.
+  CXXFLAGS="-march=native -O2 -pipe"
   //Можете добавить -m64 чтобы явно указать компилятору собирать 64-битные пакеты
   //Если вы выбрали multilib, то не пишите -m64
   MAKEOPTS="-j4"  // Цифра - количество потоков
