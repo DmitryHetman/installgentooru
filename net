@@ -1,0 +1,41 @@
+ifconfig eth0 192.168.x.x
+Замени eth0 на свой интерфейс (очевидно, но мало ли)
+route add default gw <ip роутера>
+Static IP addresses
+
+In case the network interface card should be configured with a static IP address, add their data to /etc/dhcpcd.conf.[1] The following is an example of manually adding a static address, routes, and DNS by editing DHCPCD's configuration file using a text editor of choice:
+FILE /etc/dhcpcd.conf
+
+static ip_address=192.168.0.10/24
+static routers=192.168.0.1
+static domain_name_servers=192.168.0.1
+
+
+
+CONFIG:
+https://wiki.gentoo.org/wiki/Handbook:X86/Networking/Modular
+
+Interface handlers
+
+We provide two interface handlers presently: ifconfig and iproute2. Only one of these is needed to do any kind of network configuration.
+
+ifconfig is installed by default (the net-tools package is part of the system profile). iproute2 is a more powerful and flexible package, but it's not included by default.
+root #emerge --ask sys-apps/iproute2
+FILE /etc/conf.d/netiproute2 is installed but still prefer ifconfig
+
+# To prefer ifconfig over iproute2 if both are installed as openrc prefers
+# to use iproute2 then
+modules="ifconfig"
+
+As both ifconfig and iproute2 do very similar things we allow their basic configuration to work with each other. For example both the below code snippet work regardless of which module the user is using.
+FILE /etc/conf.d/netExample different approaches for configuration
+
+config_eth0="192.168.0.2/24"
+config_eth0="192.168.0.2 netmask 255.255.255.0"
+
+# We can also specify broadcast
+config_eth0="192.168.0.2/24 brd 192.168.0.255"
+config_eth0="192.168.0.2 netmask 255.255.255.0 broadcast 192.168.0.255"
+
+
+
