@@ -221,11 +221,17 @@ man weston.ini
 
 ~/.config/weston.ini
 [core]
+modules=xwayland.so
 repaint-window=16
 idle-time=0
 [keyboard]
-keymap_layout=us
+keymap_layout=us,ru
+keymap_options=grp:shifts_toggle
 [shell]
+background-image=none
+#background-clolor=0x0000000
+panel-color=0x00000000
+#num-workspaces=3
 animation=none
 close-animation=none
 startup-animation=none
