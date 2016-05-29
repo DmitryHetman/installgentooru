@@ -33,7 +33,7 @@ Weston - 32 секунды
 http://distrowatch.com/search.php?basedon=Gentoo
 https://wiki.gentoo.org/wiki/Distributions_based_on_Gentoo
 >Как быстро вкатится?
-Прочитай Linux Sea (Ссылка в гайде) и Gentoo Handbook, гайдик, и проблем с установкой и использованием не будет.
+Прочитай Linux Sea (Ссылка в конце гайда, там вообще много полезных ссылок) и Gentoo Handbook, гайдик, и проблем с установкой и использованием не будет.
 >Кококок ШАПКА ПЛОХАЯ!!!
 Дочитай ее до конца и улучшай если считаешь ее плохой. В конце ссылка на github, делай пулл-реквесты, форкай, пиши с нуля.
 
@@ -48,7 +48,7 @@ https://wiki.gentoo.org/wiki/Distributions_based_on_Gentoo
 8. Безопасность
 9. Стабильность
 
-Install Gentoo GNU/Linux Tips and Tricks:
+Install Gentoo GNU/Linux Guide:
 https://github.com/DmitriyHetman/gentoo/blob/master/install_guide/ru/install-gentoo
 
 Ссылки на шапку:
