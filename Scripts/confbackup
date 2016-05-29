@@ -5,7 +5,7 @@ if [ $# -eq 0 ]
         echo -e "Enter intut and output directory!\nSyntax:"
         echo -e "\t ${0##*/} <Input path/> <Output path/> <options>"
         echo 'Options:'
-        echo "-hw -- Include info about current hardvare and kernel modules for it, don't use it for restoring configs!"
+        echo "-hw -- Include info about current hardware and kernel modules for it, don't use it for restoring configs!"
         echo  -e "To save all CPU flags backup directory must be mounted with execution rights\n"
         echo "From first argument ${0##*/} read config files and instert them to output directory"
         echo 'Every absolute or relative path must end with slash "/"'
