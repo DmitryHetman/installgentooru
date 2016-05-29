@@ -26,7 +26,7 @@ Weston - 32 секунды
 Да, особенно если собрирать с флагами CFLAGS="-Os" USE="-static -static-libs" и использовать wayland.
 >Какой будет прирост производительности относительно других ОС?
 Зависит от приложения, прирост 2-4 относительно Шиндовса вполне реально получить.
-Разница с Арчем не такая внушительная: https://github.com/DmitriyHetman/gentoo/blob/beta/install_guide/ru/hardinfo
+Разница с Арчем не такая внушительная: https://github.com/DmitriyHetman/gentoo/blob/master/install_guide/ru/hardinfo
 >Почему Я должен перекатыватся со своего Арча?
 Потому что здесь тоже есть pacman.
 >Какие еще есть Gentoo-based  дистрибутивы?
