@@ -5,7 +5,7 @@ I. Lower is better:
 3) CPU N-Queens - 4.38
 4) FPU FFT - 0.74
 5) FPU Raytrasing -3.52
-Higher is better:
+II. Higher is better:
 1) CPU Cryptohash 482.08
 2) GPU Drawing
 
@@ -16,6 +16,6 @@ I. Lower is better:
 3) CPU N-Queens - 5.09
 4) FPU FFT - 1.46
 5) FPU Raytrasing - 2.59
-Higher is better:
+II. Higher is better:
 1) CPU Cryptohash - 683.40
 2) GPU Drawing - 50328.98
