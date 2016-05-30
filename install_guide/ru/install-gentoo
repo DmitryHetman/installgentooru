@@ -183,6 +183,17 @@ General setup>
 6) посмотреть удачно ли записалась информация в загрузчик
 >efibootmgr -v
 
+Ели ваше ядро не может получить доступ к корневой директории то надо явно указать адрес раздела PARTUUID:
+Just to clarify UUIDs are the only reliable way for the kernel to identify hard drives. There are two types: UUID, which is stored in the filesystem and is not available to the kernel at boot-time, and PARTUUID, which is stored in the partition table and IS available at boot time. So you have to use
+root=PARTUUID=SSSSSSSS-PP
+as /dev/sd?? can change with devices plugged/unplugged.
+Don't forget to capitalize the hexadecimal number SSSSSSSS-PP you get from blkid!
+The more easy to use
+root=LABEL=
+root=UUID=
+only work with an initramfs that fetches these identifiers.
+So, if you use a non-empty initramfs, you can have all three! With an empty initramfs, you only have PARTUUID.
+Паста взята с http://unix.stackexchange.com/questions/93767/why-cant-i-specify-my-root-fs-with-a-uuid#93777
 9. Заключительные шаги.
 passwd - введите пароль для рута, пользователя добавите уже когда загрузитесь в систему.
 
