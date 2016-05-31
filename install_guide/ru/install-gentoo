@@ -251,6 +251,10 @@ focus-animation=none
 name=VGA1
 seat=default
 
+На иксах 
+setxkbmap -layout "us,ru"
+setxkbmap -option "grp:caps_toggle,grp_led:caps,compose:ralt"
+
 Wayland:
 https://wayland.freedesktop.org/
 http://www.chaosreigns.com/wiki/Main_Page
