@@ -1,0 +1,11 @@
+
+xset r rate 500 60
+
+Вот еще с вот этим играть интересно. Спасает во всяких терминальных редакторах, да и вообще по дефолту это значение очень медленное! что оно делает? смотри man xset
+
+r The r option controls the autorepeat. Invoking with "-r", or "r off", will disable autorepeat, whereas "r", or "r on" will enable autorepeat.
+Following the "-r" or "r" option with an integer keycode between 0 and 255 will disable or enable autorepeat on that key respectively, but only if
+it makes sense for the particular keycode. Keycodes below 8 are not typically valid for this command. Example: "xset -r 10" will disable autore‐
+peat for the "1" key on the top row of an IBM PC keyboard.
+
+Да, ты понял правильно. А может и нет не поня, второе значение увеличивает скорость ввода символа при зажатии клавиши, указывается в герцах, вроде.
