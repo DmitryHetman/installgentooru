@@ -42,16 +42,21 @@ uclib/musl могут не поддерживать некоторые паке�
 Можете прочитать так-же про эти либы:
 http://www.etalabs.net/compare_libcs.html
 https://blogs.gentoo.org/blueness/2015/08/04/alt-libc-the-state-of-uclibc-and-musl-in-gentoo-part-1/
+
 uclibc:
 https://wiki.gentoo.org/wiki/Project:Hardened_uClibc
 http://opensource.dyc.edu/node/345
 http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-uclibc-hardened/
 https://dev.gentoo.org/~vapier/uclibc/uclibc.txt
+Готовый xfce Desktop на uClibc:
 https://wiki.gentoo.org/wiki/Project:Hardened_uClibc/Lilblue
+
 musl:
 https://wiki.gentoo.org/wiki/Project:Hardened_musl
 http://distfiles.gentoo.org/experimental/amd64/musl/
+Готовый xfce Desktop на musl:
 https://wiki.gentoo.org/wiki/Project:Hardened_musl/Bluedragon
+
 Имейте в виду что на nomultilib/musl/uclibc речи о запуске 32 битных ELF не идет, на счастье уже не 2002 и все можно скомпилировать под 64 бита, но игроделы этому не научились так что с этими профилями вам непаиграть (разве что в опенсорс-игры), стим вроде на эти профили тоже не ставится.
 Не ставьте Hardened если не знаете что делаете:
 https://wiki.gentoo.org/wiki/Project:Hardened
