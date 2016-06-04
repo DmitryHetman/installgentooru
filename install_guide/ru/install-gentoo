@@ -73,7 +73,8 @@ http://resources.infosecinstitute.com/gentoo-hardening-part-1-introduction-harde
   CXXFLAGS="-march=native -O2 -pipe"
   //Можете добавить -m64 чтобы явно указать компилятору собирать 64-битные пакеты
   //Если вы выбрали multilib, то не пишите -m64
-  MAKEOPTS="-j4"  // Цифра - количество потоков
+  MAKEOPTS="-j4"  
+  // Цифра - количество потоков, количество_потоков+1 работает медленнее пруф: https://blogs.gentoo.org/ago/2013/01/14/makeopts-jcore-1-is-not-the-best-optimization/
   CHOST="x86_64-pc-linux-gnu"  // Это дефолты и перенастраивать их крайне нежелательно и не имеет смысла.
   CPU_FLAGS_X86="" //Эту переменную можно задать с помощью cpuinfo2cpuflags-x86 >> /etc/portage/make.conf
   CTARGET="x86_64-pc-linux-gnu"
