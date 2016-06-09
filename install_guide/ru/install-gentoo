@@ -293,6 +293,9 @@ https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation/ru
 https://lisakov.com/blog/gentoo-for-goofy/
 http://www.unix-lab.org/posts/install-gentoo/
 http://nix-sa.blogspot.com/2011/09/gentoo-1.html
+https://github.com/for2ch/Linux-F.A.Q/wiki/Install-Gentoo
+http://pastebin.com/U3Lg1pCp
+
 На английском:
 https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation
 http://xed.ch/h/gentoo
@@ -309,6 +312,7 @@ http://nix-sa.blogspot.com/2011/09/linux-gentoo.html
 Работа с пакетами:
 https://wiki.gentoo.org/wiki/Gentoo_Cheat_Sheet
 https://wiki.gentoo.org/wiki/Portage#Usage
+http://pastebin.com/BgcPbjG9
 
 Шифрование и безопасность:
 https://wiki.gentoo.org/wiki/Dm-crypt
@@ -339,6 +343,10 @@ https://wiki.gentoo.org/wiki/GPM
 
 Оптимизации:
 http://optimization.hardlinux.ru/
+https://wiki.gentoo.org/wiki/CFLAGS
+
+Инфраструктура Gentoo:
+https://infra-status.gentoo.org/#pk_campaign=err&pk_kwd=emptypage
 
 Скрипты для бекапа конфигов и вывода информации о железе:
 https://github.com/DmitriyHetman/gentoo/tree/master/Scripts
