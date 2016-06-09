@@ -28,6 +28,7 @@ Linux Kernel - 3 минуты и 23 секунды
 xorg-server - 3 минуты 40 секунд
 Chromium - 2 часа 52 минуты
 Firefox - 32 минуты
+Bash - 51 секунда
 Weston - 32 секунды
 >Правда что Gentoo потребляет меньше RAM?
 Да, особенно если собрирать с флагами CFLAGS="-Os" USE="-static -static-libs" и использовать wayland.
