@@ -345,6 +345,8 @@ https://wiki.gentoo.org/wiki/GPM
 http://optimization.hardlinux.ru/
 https://wiki.gentoo.org/wiki/CFLAGS
 
+OpenSWR - самый быстрый софтварный рендер.
+OpenSWR>Gallium3D>Mesa
 Использование OpenSWR вместо Mesa:
 http://openswr.org/
 https://github.com/OpenSWR
