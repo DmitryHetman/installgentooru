@@ -54,6 +54,7 @@ https://wiki.gentoo.org/wiki/Project:Hardened_uClibc/Lilblue
 musl:
 https://wiki.gentoo.org/wiki/Project:Hardened_musl
 http://distfiles.gentoo.org/experimental/amd64/musl/
+http://distfiles.gentoo.org/experimental/amd64/musl/HOWTO
 Готовый xfce Desktop на musl:
 https://wiki.gentoo.org/wiki/Project:Hardened_musl/Bluedragon
 
