@@ -1,0 +1,33 @@
+> windows builds:
+- https://sourceforge.net/projects/mpv-player-windows/files/
+- https://bitbucket.org/rorgoroth/mpv-for-windows/downloads
+- https://mpv.srsfckn.biz
+
+> user shaders:
+- https://gist.github.com/igv
+- https://gist.github.com/voltmtr
+
+> low preset:
+vo=opengl:deband:blend-subtitles
+hwdec=auto-copy
+ytdl-format=bestvideo[height<=?720][vcodec!=vp9][fps<=?30]+bestaudio/best
+
+
+> medium preset:
+vo=opengl-hq:blend-subtitles
+hwdec=auto-copy
+ytdl-format=bestvideo[height<=?1080][vcodec!=vp9][fps<=?30]+bestaudio/best
+
+
+> high preset:
+vo=opengl-hq:interpolation:tscale=oversample:blend-subtitles
+video-sync=display-resample
+hwdec=auto-copy
+ytdl-format=bestvideo[height<=?1080]+bestaudio/best
+
+
+> higher preset:
+vo=opengl-hq:interpolation:tscale=oversample:cscale=ewa_lanczossharp:scale=ewa_lanczossharp:blend-subtitles
+video-sync=display-resample
+hwdec=auto-copy
+ytdl-format=bestvideo+bestaudio/best
