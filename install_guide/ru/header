@@ -36,7 +36,7 @@ Weston - 32 секунды
 Зависит от приложения, прирост в 2-4 раза относительно Шиндовса вполне реально получить.
 Разница с Арчем не такая внушительная: https://github.com/DmitriyHetman/gentoo/blob/master/install_guide/ru/hardinfo
 >Почему Я должен перекатыватся со своего Арча?
-Потому что здесь тоже есть pacman.
+Потому что здесь тоже есть pacman и можно установить yaourt (AUR).
 >Какие еще есть Gentoo-based  дистрибутивы?
 http://distrowatch.com/search.php?basedon=Gentoo
 https://wiki.gentoo.org/wiki/Distributions_based_on_Gentoo
