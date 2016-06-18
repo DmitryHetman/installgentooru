@@ -55,6 +55,7 @@ musl:
 https://wiki.gentoo.org/wiki/Project:Hardened_musl
 http://distfiles.gentoo.org/experimental/amd64/musl/
 http://distfiles.gentoo.org/experimental/amd64/musl/HOWTO
+http://wiki.musl-libc.org/wiki/Pkgsrc_results
 Готовый xfce Desktop на musl:
 https://wiki.gentoo.org/wiki/Project:Hardened_musl/Bluedragon
 
