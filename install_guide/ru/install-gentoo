@@ -352,6 +352,17 @@ https://wiki.gentoo.org/wiki/GPM
 http://optimization.hardlinux.ru/
 https://wiki.gentoo.org/wiki/CFLAGS
 
+Автораспаралеливание циклов с помощью Graphite:
+https://gcc.gnu.org/wiki/Graphite/Parallelization
+http://yuguangzhang.com/blog/enabling-gcc-graphite-and-lto-on-gentoo/
+https://gcc.gnu.org/wiki/Graphite-4.8
+
+Шрифты:
+https://wiki.gentoo.org/wiki/Fontconfig
+https://www.freedesktop.org/wiki/Software/HarfBuzz/
+https://packages.gentoo.org/packages/media-libs/harfbuzz
+
+
 OpenSWR - самый быстрый софтварный рендер.
 OpenSWR>Gallium3D>Mesa
 Использование OpenSWR вместо Mesa:
