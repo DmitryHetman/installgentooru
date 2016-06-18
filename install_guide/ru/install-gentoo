@@ -56,6 +56,8 @@ https://wiki.gentoo.org/wiki/Project:Hardened_musl
 http://distfiles.gentoo.org/experimental/amd64/musl/
 http://distfiles.gentoo.org/experimental/amd64/musl/HOWTO
 http://wiki.musl-libc.org/wiki/Pkgsrc_results
+Поскольку не все пакеты собираются в мюсле придется добавить оверлей, у меня их два, офицеальный musl  и этот:
+https://github.com/lluixhi/musl-extras
 Готовый xfce Desktop на musl:
 https://wiki.gentoo.org/wiki/Project:Hardened_musl/Bluedragon
 
