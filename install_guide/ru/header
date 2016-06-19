@@ -45,6 +45,8 @@ https://wiki.gentoo.org/wiki/Distributions_based_on_Gentoo
 Прочитай Linux Sea (Ссылка в конце гайда, там вообще много полезных ссылок) и Gentoo Handbook, гайдик, и проблем с установкой и использованием не будет.
 >У меня какие-то проблемы с perl
 perl-cleaner --reallyall
+>У меня какие-то генту-спецефические проблемы
+https://wiki.gentoo.org/wiki/Troubleshooting
 >Как обновить систему?
 emerge -avuDUN --changed-deps=y --with-bdeps=y @system
 emerge -avuDUN --changed-deps=y --with-bdeps=y @world
