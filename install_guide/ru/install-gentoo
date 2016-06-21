@@ -249,8 +249,9 @@ repaint-window=16
 idle-time=0
 [keyboard]
 keymap_layout=us,ru
-keymap_options=grp:shifts_toggle
+keymap_options=grp:caps_toggle
 [shell]
+num-workspaces=12
 background-image=none
 #background-clolor=0x0000000
 panel-color=0x00000000
