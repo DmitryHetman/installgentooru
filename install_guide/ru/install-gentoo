@@ -55,7 +55,7 @@ musl:
 https://wiki.gentoo.org/wiki/Project:Hardened_musl
 http://distfiles.gentoo.org/experimental/amd64/musl/
 http://distfiles.gentoo.org/experimental/amd64/musl/HOWTO
-http://wiki.musl-libc.org/wiki/Pkgsrc_results
+http://wiki.musl-libc.org/wiki/Pkgsrc_results -- совместимость либы без патчей с пакетами
 Поскольку не все пакеты собираются в мюсле придется добавить оверлей, у меня их два, офицеальный musl  и этот:
 https://github.com/lluixhi/musl-extras
 Я дал ему выше приоритет, так как пакеты там свежее нашлись, и ебилд gcc6.1 рабочий.
