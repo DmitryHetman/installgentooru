@@ -56,13 +56,15 @@ https://wiki.gentoo.org/wiki/Project:Hardened_musl
 http://distfiles.gentoo.org/experimental/amd64/musl/
 http://distfiles.gentoo.org/experimental/amd64/musl/HOWTO
 http://wiki.musl-libc.org/wiki/Pkgsrc_results
-Поскольку не все пакеты собираются в мюсле придется добавить оверлей, у меня их два, офицеальный musl  и этот:
+Поскольку не все пакеты собираются в мюсле придется добавить оверлеи:
+https://github.com/gentoo/musl
+https://github.com/N8Fear/musl-overlay
 https://github.com/lluixhi/musl-extras
 Я дал ему выше приоритет, так как пакеты там свежее нашлись, и ебилд gcc6.1 рабочий.
 Готовый xfce Desktop на musl:
 https://wiki.gentoo.org/wiki/Project:Hardened_musl/Bluedragon
 
-Имейте в виду что на nomultilib/musl/uclibc речи о запуске 32 битных ELF не идет, на счастье уже не 2002 и все можно скомпилировать под 64 бита, но игроделы этому не научились так что с этими профилями вам непаиграть (разве что в опенсорс-игры), стим вроде на эти профили тоже не ставится.
+Имейте в виду что на nomultilib/musl/uclibc речи о запуске 32 битных ELF не идет (хотя в uclibc реализуемо), на счастье уже не 2002 и все можно скомпилировать под 64 бита, но игроделы этому не научились так что с этими профилями вам непаиграть (разве что в опенсорс-игры), стим вроде на эти профили тоже не ставится.
 Не ставьте Hardened если не знаете что делаете:
 https://wiki.gentoo.org/wiki/Project:Hardened
 https://wiki.gentoo.org/wiki/Hardened_Gentoo
