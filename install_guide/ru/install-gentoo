@@ -5,6 +5,10 @@
 1. Выбор Live CD
 Наиболее удобным и оптимальным считаю SystemRescueCD - поддерживает efi, имеет 64-битное ядро и графическую оболочку, совместим с Gentoo GNU/Linux.
 https://www.system-rescue-cd.org/Download
+Можно и gentoo minimal CD приспособить для efi:
+https://forums.gentoo.org/viewtopic-p-7581718.html
+https://wiki.gentoo.org/wiki/LiveUSB/Guide#Adjusting_the_bootloader_configuration
+http://www.rodsbooks.com/efi-bootloaders/elilo.html
 
 2. Разметка диска.
 Для разметки диска есть множество утилит, предлагаю использовать fdisk, его преимущество в том, что он сначала сделает карту разметки, и только потом запишет изменения на диск. Чтобы начать наберите:
