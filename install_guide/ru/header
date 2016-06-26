@@ -35,7 +35,7 @@ Weston - 32 секунды
 Да, особенно если uclibc собрирать с флагами CFLAGS="-Os" USE="-static -static-libs" и использовать wayland в качестве протокола для дисплей-сервера с легкой оболочкой типа weston.
 >Какой будет прирост производительности относительно других ОС?
 Зависит от приложения, прирост в 2-4 раза относительно Шиндовса вполне реально получить.
-Разница с Арчем не такая внушительная: https://github.com/DmitriyHetman/gentoo/blob/master/install_guide/ru/hardinfo
+Разница с Арчем не такая внушительная: https://github.com/DmitriyHetman/installgentoo/blob/master/install_guide/ru/hardinfo
 >Почему Я должен перекатыватся со своего Арча?
 Потому что здесь тоже есть pacman и можно установить yaourt (AUR).
 >Какие еще есть Gentoo-based  дистрибутивы?
@@ -52,6 +52,9 @@ emerge -avuDUN --changed-deps=y --with-bdeps=y @system
 emerge -avuDUN --changed-deps=y --with-bdeps=y @world
 >Кококок ШАПКА ПЛОХАЯ!!!
 Дочитай ее до конца и улучшай если считаешь ее плохой. В конце ссылка на github, делай пулл-реквесты, форкай, пиши с нуля.
+>Не собирается пакет
+проверяй исправность интерпритаторов и компилятора
+Попробуй собрать пакет с опцией -j1 (в одном потоке)
 >Я тут пришел с вопосом...
 Тогда спрашивай чего хочешь добиться, а не как, давай максимум вводной информации.
 
@@ -66,21 +69,16 @@ emerge -avuDUN --changed-deps=y --with-bdeps=y @world
 8. Безопасность
 9. Стабильность
 
-Install Gentoo GNU/Linux Guide:
-https://github.com/DmitriyHetman/gentoo/blob/master/install_guide/ru/install-gentoo
-
-Гайд Gentoo для домохозяек
-Гайд http://pastebin.com/U3Lg1pCp
-http://arhivach.org/thread/117792/
-http://arhivach.org/thread/111795/
+Install Gentoo GNU/Linux Guide (содержит также кучу полезных ссылок):
+https://github.com/DmitriyHetman/installgentoo/blob/master/install_guide/ru/install-gentoo
 
 Ссылки на шапку:
 Сюда коммитить, и комментировать:
-https://github.com/DmitriyHetman/gentoo/blob/beta/install_guide/ru/header
+https://github.com/DmitriyHetman/installgentoo/blob/beta/install_guide/ru/header
 Отсюда брать стабильную шапку:
-https://github.com/DmitriyHetman/gentoo/blob/master/install_guide/ru/header
+https://github.com/DmitriyHetman/installgentoo/blob/master/install_guide/ru/header
 Cсылка для редактирования гайда:
-https://github.com/DmitriyHetman/gentoo/blob/beta/install_guide/ru/install-Gentoo
+https://github.com/DmitriyHetman/installgentoo/blob/beta/install_guide/ru/install-Gentoo
 
 Архив тредов:
-https://github.com/DmitriyHetman/gentoo/blob/master/install_guide/ru/archive
+https://github.com/DmitriyHetman/installgentoo/blob/master/install_guide/ru/archive
