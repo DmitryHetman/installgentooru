@@ -31,3 +31,4 @@ vo=opengl-hq:interpolation:tscale=oversample:cscale=ewa_lanczossharp:scale=ewa_l
 video-sync=display-resample
 hwdec=auto-copy
 ytdl-format=bestvideo+bestaudio/best
+--vo=opengl-hq=interpolation --video-sync=display-resample
