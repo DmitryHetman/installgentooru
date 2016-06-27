@@ -14,6 +14,7 @@
 - https://yt-dl.org/downloads/latest/youtube-dl.exe
 
 > Удобные скрипты для mpv.
+- https://github.com/mpv-player/mpv/wiki/User-Scripts
 - https://github.com/argon-/mpv-stats
 - https://github.com/kevinlekiller/mpv_scripts/tree/master/autospeed
 - https://github.com/kevinlekiller/mpv_scripts/tree/master/autospeedwin
