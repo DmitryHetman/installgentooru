@@ -1,0 +1,6 @@
+DESCRIPTION="Ozone-Wayland is the implementation of Chromium's Ozone for supporting Wayland graphics system."
+SLOT="0"
+EAPI=6
+HOMEPAGE="https://github.com/01org/ozone-wayland"
+SRC_URI=""
+LICENSE="Inte"
