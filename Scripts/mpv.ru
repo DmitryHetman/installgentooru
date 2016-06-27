@@ -61,3 +61,6 @@ vo=opengl-hq:backend=dxinterop:scale=ewa_lanczossharp:cscale=ewa_lanczossoft:pre
 https://github.com/DmitriyHetman/installgentoo/blob/beta/Scripts/mpv.ru
 Взять шапку:
 https://github.com/DmitriyHetman/installgentoo/blob/master/Scripts/mpv.ru
+
+Архив тредов:
+https://github.com/DmitriyHetman/installgentoo/blob/master/Scripts/mpv.arch
