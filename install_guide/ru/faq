@@ -42,3 +42,6 @@ emerge -avuDUN --changed-deps=y --with-bdeps=y @world
 Попробуй собрать пакет с опцией -j1 (в одном потоке)
 > Я тут пришел с вопосом...
 Тогда спрашивай чего хочешь добиться, давай максимум информации, конфиги, логи.
+> Куда еще можно обратится за помощью?
+В официальный Freenode IRC канал #gentoo - https://www.gentoo.org/get-involved/irc-channels/
+В канал #musl если у тебя Gentoo musl.
