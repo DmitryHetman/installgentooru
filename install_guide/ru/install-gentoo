@@ -52,6 +52,8 @@ https://wiki.gentoo.org/wiki/Project:Hardened_uClibc
 http://opensource.dyc.edu/node/345
 http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-uclibc-hardened/
 https://dev.gentoo.org/~vapier/uclibc/uclibc.txt
+https://www.kernel.org/pub/linux/libs/uclibc/Glibc_vs_uClibc_Differences.txt
+
 Готовый xfce Desktop на uClibc:
 https://wiki.gentoo.org/wiki/Project:Hardened_uClibc/Lilblue
 
@@ -105,8 +107,8 @@ http://resources.infosecinstitute.com/gentoo-hardening-part-1-introduction-harde
   INPUT_DEVICES="evdev" //Если используете тачпад или графический планшет то придется добавить synaptics
   ACCEPT_KEYWORDS="~amd64"  //Начет отображать бета-версии пакетов, как правило большинство из них официально стабильно. Без этой опции будут скачиваться довольно старые пакеты.
 Конфиг для экономной системы отличается парой флагов:
-  CFLAGS="-march=native -mtune=native -Os -pipe"
-  CXXFLAGS="-march=native -mtune=native -Os -pipe"
+  CFLAGS="-march=native -Os -pipe"
+  CXXFLAGS="-march=native -Os -pipe"
   USE="-fortran -static -static-libs"
 Если вам интересно посмотреть на готовый make.conf для Intel Core i3 4330 с встроеной графикой можете посмотреть здесь:  https://github.com/DmitriyHetman/gentoo/blob/master/make.conf
 6. /etc/portage/package.use/localuses
