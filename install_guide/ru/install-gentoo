@@ -301,7 +301,6 @@ https://github.com/michaelforney/wld
 https://github.com/michaelforney/swc
 https://github.com/michaelforney/velox
  
-
 Chromium for Wayland:
 https://www.phoronix.com/scan.php?page=news_item&px=Google-Chrome-50
 https://www.phoronix.com/scan.php?page=news_item&px=Intel-Ozone-Wayland-Continues
@@ -309,8 +308,6 @@ https://www.phoronix.com/scan.php?page=news_item&px=MTU5NTU
 https://github.com/01org/ozone-wayland/blob/master/README.md
 https://docs.google.com/document/d/118Cmq_dedHOr4jfyVeE4jBhV7hXzhnaVCqegNMGano0/edit
 https://www.chromium.org/developers/design-documents/ozone
-
-А что теперь? Я итак уже гений!
 
 Гайды по установке.
 На русском:
@@ -366,7 +363,8 @@ http://www.cs.utah.edu/~wbsun/
 https://wiki.gentoo.org/wiki/Tmux
 https://wiki.gentoo.org/wiki/GPM
 w3m - браузер для фреймбуфера, отображает изображения в tty, был патч для поддержки js - w3m-js, не могу найти, есть поддержка мыши.
-
+fbpdf - читалка pdf/djvu в tty.
+JFBview - читалка, и может смотреть изображения.
 
 
 Оптимизации:
