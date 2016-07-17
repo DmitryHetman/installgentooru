@@ -48,6 +48,7 @@ http://www.etalabs.net/compare_libcs.html
 https://blogs.gentoo.org/blueness/2015/08/04/alt-libc-the-state-of-uclibc-and-musl-in-gentoo-part-1/
 
 uclibc:
+Для uclibc надо указать правильно CHOST CTARGET, убедитесь что не указали там gnu, надо uclibc
 https://wiki.gentoo.org/wiki/Project:Hardened_uClibc
 http://opensource.dyc.edu/node/345
 http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-uclibc-hardened/
@@ -58,6 +59,7 @@ https://www.kernel.org/pub/linux/libs/uclibc/Glibc_vs_uClibc_Differences.txt
 https://wiki.gentoo.org/wiki/Project:Hardened_uClibc/Lilblue
 
 musl:
+Не забываем про CHOST и СTARTGET, указываем в конце musl
 https://wiki.gentoo.org/wiki/Project:Hardened_musl
 http://distfiles.gentoo.org/experimental/amd64/musl/
 http://distfiles.gentoo.org/experimental/amd64/musl/HOWTO
@@ -90,7 +92,7 @@ http://resources.infosecinstitute.com/gentoo-hardening-part-1-introduction-harde
   //Если вы выбрали multilib, то не пишите -m64
   MAKEOPTS="-j4"  
   // Цифра - количество потоков, количество_потоков+1 работает медленнее пруф: https://blogs.gentoo.org/ago/2013/01/14/makeopts-jcore-1-is-not-the-best-optimization/
-  CHOST="x86_64-pc-linux-gnu"  // Это дефолты и перенастраивать их крайне нежелательно и не имеет смысла.
+  CHOST="x86_64-pc-linux-gnu"  // Это дефолты для glibc и перенастраивать их крайне нежелательно и не имеет смысла, для uclibc и musl в место gnu указывайте uclibc или musl.
   CPU_FLAGS_X86="" //Эту переменную нужно задать с помощью cpuinfo2cpuflags-x86 >> /etc/portage/make.conf
   CTARGET="x86_64-pc-linux-gnu"
   USE="-fortran static static-libs"
@@ -302,6 +304,12 @@ https://github.com/michaelforney/wld
 https://github.com/michaelforney/swc
 https://github.com/michaelforney/velox
  
+ Browsers for Wayland:
+ xombrero
+ epiphany
+ midori
+ 
+ 
 Chromium for Wayland:
 https://www.phoronix.com/scan.php?page=news_item&px=Google-Chrome-50
 https://www.phoronix.com/scan.php?page=news_item&px=Intel-Ozone-Wayland-Continues
@@ -367,7 +375,7 @@ w3m - браузер для фреймбуфера, отображает изо�
 fbpdf - читалка pdf/djvu в tty.
 JFBview - читалка, и может смотреть изображения как и fbpdf, поддерживает содержание pdf.
 epub или phyton-epub - смотрелка epub для терминала или tty.
-
+netsurf - полноценный браузер в фреймбуфере (tty), поддерживает js.
 
 
 Оптимизации:
