@@ -309,10 +309,11 @@ https://github.com/michaelforney/velox
  epiphany
  midori
  
-Book readers for wayland
+Book readers for Wayland:
 weston-view from weston-1.4.0
-mozilla pdf.js for browser
+mozilla pdf.js and other js-viewers for browser
 fbpdf in framebuffer
+
 
 
 Chromium for Wayland:
